@@ -24,10 +24,10 @@ int main(int argc, const char * argv[]) {
         NSArray *vowels = @[@"a", @"e", @"i", @"o", @"u"];
         
         // Declare a block variable
-        ArrayEnumerationBlock devowelizer;
+        // ArrayEnumerationBlock devowelizer;
         
         // Compose a block and assign it to the variable
-        devowelizer = ^(id string, NSUInteger i, BOOL *stop) {
+        [originalStrings enumerateObjectsUsingBlock:^(id string, NSUInteger i, BOOL *stop) {
             
             NSRange yRange = [string rangeOfString:@"y"
                                            options:NSCaseInsensitiveSearch];
@@ -54,9 +54,9 @@ int main(int argc, const char * argv[]) {
             
             [devowelizedStrings addObject:newString];
             
-        }; // end of block assignement
+        }]; // end of block assignement
         
-        [originalStrings enumerateObjectsUsingBlock:devowelizer];
+
         NSLog(@"devowelized strings: %@", devowelizedStrings);
     }
     return 0;
